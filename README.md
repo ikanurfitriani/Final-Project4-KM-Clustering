@@ -1,4 +1,4 @@
-# Final-Project4-Clustering-KM
+# Final-Project4-Clustering
 ## Introduction
 **Kelompok 8**
 - Ervizal Buana J
