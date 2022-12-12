@@ -5,4 +5,4 @@
 - Ika Nurfitriani
 - Muhammad Reesa R
 
-Link deployment: 
+Link deployment: https://fp4-kel8.up.railway.app/
