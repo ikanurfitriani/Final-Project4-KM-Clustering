@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
+        <title>Clustering App</title>
+    </head>
+    <body class="flex flex-col justify-between item-center p-8 min-h-screen text-gray-800 md:flex-row"
+        style="background-image: url(static/img/bg3.jpg); ">
+        <main class="bg-white p-16 rounded-lg">
+            <h1 class="text-3xl font-bold mb-8">
+                Customer Segmentation to Define <br>Marketing Strategy:
+            </h1>
+
+            <form action="{{url_for('predict')}}" method="POST" class="flex flex-col">
+                <label for="inputpurchases"><b>Purchases</b>
+                <p><i>(Amount of purchases made from account)</i></p>
+                </label>
+				<input id="inputpurchases" name="purchases" 
+				class="p-4 bg-gray-100 rounded-md" tabindex="2" placeholder="Between 0 to 50000" min="0" step="0.01" max="50000" type="number" required>
+
+                <label for="inputoneoff_purchases"><b>Oneoff Purchases</b>
+                <p><i>(Maximum purchase amount done in one-go)</i></p>
+                </label>
+				<input id="inputoneoff_purchases" name="oneoff_purchases" 
+				class="p-4 bg-gray-100 rounded-md" tabindex="2" placeholder="Between 0 to 41000" min="0" step="0.01" max="41000" type="number" required>
+
+                <label for="inputinstallments_purchases"><b>Installments Purchases</b>
+                <p><i>(Amount of purchase done in installment)</i></p>
+                </label>
+				<input id="inputinstallments_purchases" name="installments_purchases" 
+				class="p-4 bg-gray-100 rounded-md" placeholder="Between 0 to 23000" min="0" step="0.01" max="23000" type="number" required>
+
+                <label for="inputpurchases_frequency"><b>Purchases Frequency</b>
+                <p><i>(How frequently the Purchases are being made)</i></p>
+                </label>
+                <select id="inputpurchases_frequenc" name="purchases_frequency" class="p-4 bg-gray-100 rounded-md">
+					<option selected disabled>Choose...</option>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</select>
+
+                <label for="inputoneoff_purchases_frequency"><b>Oneoff Purchases Frequency</b>
+                <p><i>(How frequently Purchases are happening in one-go)</i></p>
+                </label>
+                <select id="inputoneoff_purchases_frequency" name="oneoff_purchases_frequency" class="p-4 bg-gray-100 rounded-md">
+					<option selected disabled>Choose...</option>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</select>
+
+                <label for="inputpurchases_installments_frequency"><b>Purchases Installments Frequency</b>
+                <p><i>(How frequently purchases in installments are being done)</i></p>
+                </label>
+                <select id="inputpurchases_installments_frequency" name="purchases_installments_frequency" class="p-4 bg-gray-100 rounded-md">
+					<option selected disabled>Choose...</option>
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</select>
+
+                <label for="inputpurchases_trx"><b>Purchases Trx</b>
+                <p><i>(Number of purchase transactions made)</i></p>
+                </label>
+				<input id="inputpurchases_trx" name="purchases_trx" 
+				class="p-4 bg-gray-100 rounded-md" placeholder="Between 0 to 400" min="0" step="1" max="400" type="number" required>
+
+                <button type="submit" class="flex justify-center align-center mt-8 p-4 bg-black text-white rounded-md">
+                    PREDICT NOW
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="feather feather-arrow-right ml-4">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </form>
+        </main>
+        <section class="mt-8 h-full flex-auto rounded-lg md:mt-0 md:ml-8">
+            <div class="bg-white p-16 rounded-lg">
+                <h1 class="text-2xl mb-8">
+                    <b>Prediction Result:</b>
+                </h1>
+                <h2 class="text-5xl font-bold">
+                    {{prediction}}
+                </h2>
+                <div class="mt-8">{{add}}</div>
+                <div class="mt-8">
+                    <p><b>According To:</b></p>
+                    <p>Purchases: {{purchases}}</p>
+                    <p>Oneoff Purchases: {{oneoff_purchases}}</p>
+                    <p>Installments Purchases: {{installments_purchases}}</p>
+                    <p>Purchases Frequency: {{purchases_frequency}}</p>
+                    <p>Oneoff Purchases Frequency: {{oneoff_purchases_frequency}}</p>
+                    <p>Purchases Installments Frequency: {{purchases_installments_frequency}}</p>
+                    <p>Purchases Trx: {{purchases_trx}}</p>
+                </div>
+            </div>
+            <div class="bg-white p-16 rounded-lg mt-8">
+                <h1 class="text-2xl mb-8">
+                    <b>About Us:</b>
+                </h1>
+                <div class="mt-8">
+                    <p>Ervizal Buana J</p>
+                    <p>Ika Nurfitriani</p>
+                    <p>Muhammad Reesa R</p>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
